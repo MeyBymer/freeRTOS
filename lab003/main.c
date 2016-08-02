@@ -25,10 +25,12 @@ unsigned long ulTaskNumber[configEXPECTED_NO_RUNNING_TASKS];    // Tableau pour 
 int main(void)
 {
   xTaskCreate(vFonctionTask, "Task 1", 200,
-            	(void *) pcTaskNom_1, 1, NULL);                  // Creation de la tache une de taille 200 en mots, priorité 1 sans handle
+            	(void *) pcTaskNom_1, 1, NULL);                    // Creation de la tache une de taille 200 en mots, priorité 1 sans handle
   xTaskCreate(vFonctionTask, "Task 2", 200, 
-	            (void *) pcTaskNom_2, 1, NULL);                  // Creation de la tache deux... avec utilisation du parametre pcTaskName recupéré
-
+	            (void *) pcTaskNom_2, tskIDLE_PRIORITY+2, NULL);   // Creation de la tache deux... avec utilisation du parametre pcTaskName recupéré
+                                                                 // Modification de la priorité avec tskIDLE_PRIORITY + 2, on remarque que la tache
+	                                                               // deux est la seule à s'executer, étant donnée sa priorité haute.
+	
   vTaskStartScheduler();                                        // Creation de la tache idle pour l'ordonnancement
 
   for(;;);                                                      // Boucle infini
