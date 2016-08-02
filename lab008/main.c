@@ -38,6 +38,7 @@ void vTaskFunction(void *pvParameters)
     vPrintString( pcTaskName );
 		vPrintStringAndNumber(pcTaskName,ulIdleCycleCount);
 
+		vTaskDelay(1000);
     vTaskDelayUntil( &xLastWakeTime, ( 250 / portTICK_RATE_MS ) );     // Pour utiliser cette primitive, il faut d'abord l'autoriser dans le fichier FreeRTOSConfig.h
                                                                        // On recupere l'adresse de la variable instant de reveil
 	}
