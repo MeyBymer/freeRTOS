@@ -3,16 +3,12 @@
 
 #include "basic_io.h"
 
-#define mainDELAY_LOOP_COUNT		(0xfffff)                       // Macro pour les delais d'inactivité
 
 /*
+ #define mainDELAY_LOOP_COUNT		(0xfffff)                       // Macro pour les delais d'inactivité
 
-//void vTask1(void *pvParameters);                                // Prototype Tache une
-//void vTask2(void *pvParameters);                                // Prototype Tache deux
-
- Modifiction du fichier, usage d'une fonction unique pour les deux taches 
-   Création d'une tache vFonctionTask
-	 Déclaration d'une const char * static pour recuperer l'identité de chaque tache
+  Suppression de la busy loop et usage de l'api vTaskDelay((temps en ms) / portTICK_RATE_MS)
+	
 */
 
 void vFonctionTask (void *pvParameters);
@@ -47,9 +43,12 @@ void vFonctionTask(void *pvParameters)                          // Implementatio
   for(;;) {
     vPrintString(pcTaskName);                                   // Code d'execution de la tache dans la boucle infinie
 
-    for(ul = 0; ul < mainDELAY_LOOP_COUNT; ul++) {              // Delai pour le blocage de la tache
-
-    }
+    vTaskDelay(250/portTICK_RATE_MS);                           // Usage du delai à la place de busy loop, on remarque notamment que 
+		                                                            // vTaskDelay donne la main à la tache une de priorité faible après que 
+		                                                            // la tache deux se soit executée; Ce que la busyloop ne faisait car elle 
+		                                                            // maintenait la tache 1 en état bloquée
+		//for(ul = 0; ul < mainDELAY_LOOP_COUNT; ul++) {            //Delai pour le blocage de la tache
+	  //}
   }
 }
 
