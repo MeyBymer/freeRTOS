@@ -1,4 +1,4 @@
-/common
+/common/*
 *.crf
 *.d
 *.o
