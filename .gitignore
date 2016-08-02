@@ -1,0 +1,14 @@
+/common
+*.crf
+*.d
+*.o
+!FreeRTOSConfig.h
+*.h
+*.lst
+*.dep
+*.htm
+*.map
+/keil_output
+/keil_output/*
+*.s
+
