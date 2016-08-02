@@ -47,6 +47,7 @@ void vFonctionTask(void *pvParameters)                          // Implementatio
 		                                                            // vTaskDelay donne la main à la tache une de priorité faible après que 
 		                                                            // la tache deux se soit executée; Ce que la busyloop ne faisait car elle 
 		                                                            // maintenait la tache 1 en état bloquée
+		
 		//for(ul = 0; ul < mainDELAY_LOOP_COUNT; ul++) {            //Delai pour le blocage de la tache
 	  //}
   }
