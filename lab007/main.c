@@ -28,17 +28,17 @@ int main(void)
 void vTaskFunction(void *pvParameters)
 {
   char *pcTaskName;
-  //portTickType xLastWakeTime;                                          // Declaration d'une variable portTickType qui recevra le dernier instant de reveil
+  portTickType xLastWakeTime;                                          // Declaration d'une variable portTickType qui recevra le dernier instant de reveil
 	                                                                     // de la tache.
   pcTaskName = ( char * ) pvParameters;
 
-  //xLastWakeTime = xTaskGetTickCount();                                 // initialisation de la variable dernier instant de reveil avec xTaskGetTickCount()
+  xLastWakeTime = xTaskGetTickCount();                                 // initialisation de la variable dernier instant de reveil avec xTaskGetTickCount()
 
   for(;;)	{
     vPrintString( pcTaskName );
 		vPrintStringAndNumber(pcTaskName,ulIdleCycleCount);
 
-    vTaskDelay(  250 / portTICK_RATE_MS  );     // Pour utiliser cette primitive, il faut d'abord l'autoriser dans le fichier FreeRTOSConfig.h
+    vTaskDelayUntil( &xLastWakeTime, ( 250 / portTICK_RATE_MS ) );     // Pour utiliser cette primitive, il faut d'abord l'autoriser dans le fichier FreeRTOSConfig.h
                                                                        // On recupere l'adresse de la variable instant de reveil
 	}
 }
@@ -47,3 +47,4 @@ void vApplicationIdleHook (void)
 {
 	ulIdleCycleCount++;
 }
+
