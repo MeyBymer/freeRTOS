@@ -1,4 +1,5 @@
 /common
+*.uvproj
 *.crf
 *.d
 *.o
