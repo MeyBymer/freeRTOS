@@ -11,4 +11,9 @@
 /keil_output
 /keil_output/*
 *.s
+*.uvopt
+*.uvgui.BymeR
+*.lnp
+*.axf
+*.sct
 

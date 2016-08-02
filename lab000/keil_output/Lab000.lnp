@@ -1,0 +1,15 @@
+--cpu Cortex-M3
+".\keil_output\croutine.o"
+".\keil_output\event_groups.o"
+".\keil_output\list.o"
+".\keil_output\queue.o"
+".\keil_output\tasks.o"
+".\keil_output\timers.o"
+".\keil_output\heap_1.o"
+".\keil_output\port.o"
+".\keil_output\main.o"
+".\keil_output\startup_mps_cm3.o"
+--library_type=microlib --strict --scatter ".\keil_output\Lab000.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\keil_output\Lab000.map" -o .\keil_output\Lab000.axf
